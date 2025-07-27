@@ -1,0 +1,28 @@
+version: '3.8'
+
+networks:
+  laravel:
+    external: true
+
+services:
+
+  2308beget:
+    container_name: 2308beget
+    build:
+      context: .
+      dockerfile: 2308beget.Dockerfile
+    working_dir: ${FOLDER_2308BEGET_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2308BEGET_SERV}
+    restart: unless-stopped
+    volumes:
+      - '${FOLDER_2308BEGET}:${FOLDER_2308BEGET_SERV}'
+    networks:
+      - laravel
+    #    depends_on:
+    #      - db_mysql
+    # tty: true
+    #    expose:
+    #      - 9000
