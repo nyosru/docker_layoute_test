@@ -1,0 +1,37 @@
+version: '3.8'
+
+networks:
+  laravel:
+    external: true
+
+services:
+
+  2309livewire:
+
+    container_name: 2309livewire
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker_data/docker.2309livewire.Dockerfile
+    working_dir: ${FOLDER_2309LIVEWIRE_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2309LIVEWIRE_SERV}
+    restart: unless-stopped
+#    ports:
+#      - 9000
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2309LIVEWIRE}:${FOLDER_2309LIVEWIRE_SERV}'
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+#      depends_on:
+#        - db_mysql
+#      links:
+#        - db_mysql:db
+

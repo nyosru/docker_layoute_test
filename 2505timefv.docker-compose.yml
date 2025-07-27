@@ -1,0 +1,86 @@
+version: '3.8'
+
+networks:
+  laravel:
+    external: true
+#    name: laravel
+
+services:
+
+#    2507yii2_test:
+#      container_name: 2507yii2_test
+##      depends_on:
+##        - db_mysql
+#      networks:
+#        - laravel
+#      build:
+#        context: .
+#        dockerfile: docker_data/docker.2507yii2_test.Dockerfile
+##      working_dir: ${FOLDER_2507YII2_TEST_SERV}
+#      working_dir: ${FOLDER_2507YII2_TEST_SERV}/web
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_2507YII2_TEST_SERV}/web
+#      restart: unless-stopped
+#      # tty: true
+#      expose:
+#        - 9000
+##      links:
+##        - db_mysql:db
+#      volumes:
+#        - '${FOLDER_2507YII2_TEST}:${FOLDER_2507YII2_TEST_SERV}'
+#
+#    e1:
+#      container_name: e1
+#      networks:
+#        - laravel
+#      build:
+#        context: .
+#        dockerfile: docker_data/docker.e1.Dockerfile
+##      working_dir: ${FOLDER_2507YII2_TEST_SERV}
+#      working_dir: ${FOLDER_E1_SERV}
+#      environment:
+#        - PHPGROUP=www-data
+#        - PHPUSER=www-data
+#        - FOLDER=${FOLDER_E1_SERV}
+#      restart: unless-stopped
+#      # tty: true
+#      expose:
+#        - 9000
+#      volumes:
+#        - '${FOLDER_E1}:${FOLDER_E1_SERV}'
+#      #      links:
+#      #        - db_mysql:db
+#      #      depends_on:
+#      #        - db_mysql
+
+
+    2505timefv:
+      container_name: 2505timefv
+#      depends_on:
+#        - db_mysql
+#      links:
+#        - db_mysql:db
+      networks:
+        - laravel
+      #        - shared_network
+      build:
+        context: .
+        dockerfile: вщcker_data/docker.2505timefv.Dockerfile
+      #        dockerfile: docker.2309livewire.Dockerfile
+      working_dir: ${FOLDER_2505TIMEFV_SERV}
+      environment:
+        - PHPGROUP=www-data
+        - PHPUSER=www-data
+        - FOLDER=${FOLDER_2505TIMEFV_SERV}
+      restart: unless-stopped
+      #      links:
+      #        - web_scraper2:parser_service
+      #    expose:
+      #      - 9000
+      expose:
+        - 9000
+      volumes:
+        - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
+

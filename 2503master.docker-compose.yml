@@ -1,0 +1,35 @@
+version: '3.8'
+
+networks:
+  laravel:
+    external: true
+
+services:
+
+  2503master:
+
+    container_name: 2503master
+    networks:
+      - laravel
+    build:
+      context: .
+      dockerfile: docker_data/docker.2503master.Dockerfile
+    working_dir: ${FOLDER_2503MASTER_SERV}
+    environment:
+      - PHPGROUP=www-data
+      - PHPUSER=www-data
+      - FOLDER=${FOLDER_2503MASTER_SERV}
+    restart: unless-stopped
+    expose:
+      - 9000
+    volumes:
+      - '${FOLDER_2503MASTER}:${FOLDER_2503MASTER_SERV}'
+    #      links:
+    #        - web_scraper2:parser_service
+    #    expose:
+    #      - 9000
+#      depends_on:
+#        - db_mysql
+#      links:
+#        - db_mysql:db
+
