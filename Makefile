@@ -8,15 +8,23 @@ create_web_laravel:
 
 start_2505timefv:
 	docker-compose -f 2505timefv.docker-compose.yml up -d
+restart_2505timefv:
+	docker-compose -f 2505timefv.docker-compose.yml up -d --build
 
 start_2507yii2_test:
 	docker-compose -f 2507yii2_test.docker-compose.yml up -d
+restart_2507yii2_test:
+	docker-compose -f 2507yii2_test.docker-compose.yml up -d --build
 
 start_2503master:
 	docker-compose -f 2503master.docker-compose.yml up -d
+restart_2503master:
+	docker-compose -f 2503master.docker-compose.yml up -d --build
 
 start_2309livewire:
 	docker-compose -f 2309livewire.docker-compose.yml up -d
+restart_2309livewire:
+	docker-compose -f 2309livewire.docker-compose.yml up --build -d
 
 start_all:
 	make create_web_laravel
@@ -24,6 +32,31 @@ start_all:
 	make start_2507yii2_test
 	make start_2503master
 	make start_2309livewire
+
+restart_all:
+	make create_web_laravel
+	make restart_2505timefv
+	make restart_2507yii2_test
+	make restart_2503master
+	make restart_2309livewire
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #
 #creat: creat_caddyfile
