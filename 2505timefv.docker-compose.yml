@@ -26,7 +26,7 @@ services:
         - '${FOLDER_2505TIMEFV}:${FOLDER_2505TIMEFV_SERV}'
 
     2505timefv_prod:
-      container_name: 2505timefv
+      container_name: 2505timefv_prod
       networks:
         - laravel
       build:
